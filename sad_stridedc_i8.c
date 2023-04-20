@@ -12,10 +12,10 @@ inline int8_t myabs(int8_t c) {
 }
 
 #define POUNDOUT(N) \
-  int sum_of_absolute_diff ## N ##_(int8_t* restrict a, int8_t* restrict b, int S) { \
+  int sum_of_absolute_diff ## N ##_(int8_t* restrict a, int8_t* restrict b) { \
   int sum = 0; \
   for (unsigned i = 0; i < N; i++) \
-    sum += myabs(sub(a[i*S], b[i*S])); \
+    sum += myabs(sub(a[i*64], b[i*64])); \
   return sum; \
 }
 
