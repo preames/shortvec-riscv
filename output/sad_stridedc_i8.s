@@ -270,6 +270,6 @@ sum_of_absolute_diff8_:
 .Lfunc_end7:
 	.size	sum_of_absolute_diff8_, .Lfunc_end7-sum_of_absolute_diff8_
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 7f596bb50944ee41a9dd1cb95c196dc6f8873b21)"
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c501aa88431db19cdda33d8f4d2ada9bf54e336e)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

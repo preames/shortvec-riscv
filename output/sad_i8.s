@@ -30,7 +30,6 @@ sum_of_absolute_diff2_:
 	vsetvli	zero, zero, e32, mf2, ta, ma
 	vsext.vf4	v9, v8
 	vmv.x.s	a0, v9
-	vsetivli	zero, 1, e32, mf2, ta, ma
 	vslidedown.vi	v8, v9, 1
 	vmv.x.s	a1, v8
 	addw	a0, a0, a1
@@ -50,10 +49,9 @@ sum_of_absolute_diff3_:
 	vmax.vv	v8, v8, v9
 	vsetvli	zero, zero, e32, mf2, ta, ma
 	vsext.vf4	v9, v8
-	vmv.x.s	a2, v9
-	vsetivli	zero, 1, e32, mf2, ta, ma
 	lbu	a0, 2(a0)
 	lbu	a1, 2(a1)
+	vmv.x.s	a2, v9
 	vslidedown.vi	v8, v9, 1
 	vmv.x.s	a3, v8
 	subw	a0, a0, a1
@@ -177,9 +175,8 @@ sum_of_absolute_diff7_:
 	vrsub.vi	v9, v8, 0
 	vmax.vv	v8, v8, v9
 	vsetvli	zero, zero, e32, mf2, ta, ma
-	vmv.v.x	v9, a0
-	vsetvli	zero, zero, e32, mf2, tu, ma
-	vmv.s.x	v9, a3
+	vslide1down.vx	v9, v8, a3
+	vslide1down.vx	v9, v9, a0
 	vsetvli	zero, zero, e16, mf4, ta, ma
 	vsext.vf2	v10, v8
 	vwadd.wv	v9, v9, v10
@@ -212,6 +209,6 @@ sum_of_absolute_diff8_:
 .Lfunc_end7:
 	.size	sum_of_absolute_diff8_, .Lfunc_end7-sum_of_absolute_diff8_
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 7f596bb50944ee41a9dd1cb95c196dc6f8873b21)"
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c501aa88431db19cdda33d8f4d2ada9bf54e336e)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

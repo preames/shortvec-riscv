@@ -131,6 +131,19 @@ vec8_addvv_i64:
 .Lfunc_end7:
 	.size	vec8_addvv_i64, .Lfunc_end7-vec8_addvv_i64
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 7f596bb50944ee41a9dd1cb95c196dc6f8873b21)"
+	.globl	vec4_addvv_i64_vector_ext
+	.p2align	1
+	.type	vec4_addvv_i64_vector_ext,@function
+vec4_addvv_i64_vector_ext:
+	vsetivli	zero, 4, e32, m1, ta, ma
+	vle32.v	v8, (a1)
+	vle32.v	v9, (a0)
+	vadd.vv	v8, v9, v8
+	vse32.v	v8, (a0)
+	ret
+.Lfunc_end8:
+	.size	vec4_addvv_i64_vector_ext, .Lfunc_end8-vec4_addvv_i64_vector_ext
+
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c501aa88431db19cdda33d8f4d2ada9bf54e336e)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

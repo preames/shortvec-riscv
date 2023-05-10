@@ -39,3 +39,8 @@ void vec8_addvv_i64(int * restrict a, int *b) {
     a[i] += b[i];
 }
 
+typedef int v4int __attribute__ ((vector_size (16)));
+void vec4_addvv_i64_vector_ext(v4int * restrict a, v4int * restrict b) {
+  *a += *b;
+}
+
