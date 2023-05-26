@@ -120,6 +120,6 @@ vec8_addvx_i64:
 .Lfunc_end7:
 	.size	vec8_addvx_i64, .Lfunc_end7-vec8_addvx_i64
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c501aa88431db19cdda33d8f4d2ada9bf54e336e)"
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 8c3a8d17c8a154894895c48a304a04df9ece4328)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
