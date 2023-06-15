@@ -135,10 +135,11 @@ vec8_addvv_i32:
 	.p2align	1
 	.type	vec4_addvv_i32_vector_ext,@function
 vec4_addvv_i32_vector_ext:
-	vsetivli	zero, 4, e32, m1, ta, ma
+	li	a2, 32
+	vsetvli	zero, a2, e32, m8, ta, ma
 	vle32.v	v8, (a1)
-	vle32.v	v9, (a0)
-	vadd.vv	v8, v9, v8
+	vle32.v	v16, (a0)
+	vadd.vv	v8, v16, v8
 	vse32.v	v8, (a0)
 	ret
 .Lfunc_end8:
@@ -150,13 +151,61 @@ vec4_addvv_i32_vector_ext:
 vec4_addvv_i32_vector_ext_scalarized:
 	vsetivli	zero, 4, e32, m1, ta, ma
 	vle32.v	v8, (a1)
-	vle64.v	v10, (a0)
-	vwadd.wv	v10, v10, v8
-	vse64.v	v10, (a0)
+	vle32.v	v9, (a0)
+	vadd.vv	v8, v9, v8
+	vse32.v	v8, (a0)
 	ret
 .Lfunc_end9:
 	.size	vec4_addvv_i32_vector_ext_scalarized, .Lfunc_end9-vec4_addvv_i32_vector_ext_scalarized
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 8c3a8d17c8a154894895c48a304a04df9ece4328)"
+	.globl	vec32_addvv_i32_vector_ext_scalarized
+	.p2align	1
+	.type	vec32_addvv_i32_vector_ext_scalarized,@function
+vec32_addvv_i32_vector_ext_scalarized:
+	csrr	a4, vlenb
+	srli	a2, a4, 3
+	li	a3, 8
+	bgeu	a3, a2, .LBB10_2
+	li	a7, 0
+	j	.LBB10_5
+.LBB10_2:
+	srli	t0, a4, 1
+	addiw	a2, t0, -1
+	andi	a6, a2, 32
+	xori	a7, a6, 32
+	slli	a4, a4, 1
+	vsetvli	a2, zero, e32, m2, ta, ma
+	mv	a2, a7
+	mv	a5, a0
+	mv	a3, a1
+.LBB10_3:
+	vl2re32.v	v8, (a3)
+	vl2re32.v	v10, (a5)
+	vadd.vv	v8, v10, v8
+	vs2r.v	v8, (a5)
+	add	a3, a3, a4
+	sub	a2, a2, t0
+	add	a5, a5, a4
+	bnez	a2, .LBB10_3
+	beqz	a6, .LBB10_7
+.LBB10_5:
+	sh2add	a0, a7, a0
+	sh2add	a1, a7, a1
+	addi	a2, a7, -32
+.LBB10_6:
+	lw	a3, 0(a1)
+	lw	a4, 0(a0)
+	add	a3, a3, a4
+	sw	a3, 0(a0)
+	addi	a0, a0, 4
+	addi	a2, a2, 1
+	addi	a1, a1, 4
+	bnez	a2, .LBB10_6
+.LBB10_7:
+	ret
+.Lfunc_end10:
+	.size	vec32_addvv_i32_vector_ext_scalarized, .Lfunc_end10-vec32_addvv_i32_vector_ext_scalarized
+
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c4a3bd7f8b7c587813d0e54d8d2dde7385895d09)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

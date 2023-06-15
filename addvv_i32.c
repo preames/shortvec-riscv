@@ -39,14 +39,20 @@ void vec8_addvv_i32(int * restrict a, int *b) {
     a[i] += b[i];
 }
 
-typedef int v4int __attribute__ ((vector_size (16)));
-typedef long v4long __attribute__ ((vector_size (sizeof(long)*4)));
+typedef int v4int __attribute__ ((vector_size (sizeof(int)*32)));
+typedef long v4long __attribute__ ((vector_size (sizeof(long)*32)));
 void vec4_addvv_i32_vector_ext(v4int * restrict a, v4int * restrict b) {
   *a += *b;
 }
 
-void vec4_addvv_i32_vector_ext_scalarized(v4long * restrict a,
+void vec4_addvv_i32_vector_ext_scalarized(v4int * restrict a,
                                           v4int * restrict b) {
   for (int i = 0; i < 4; i++)
-    ((long*)a)[i] += ((int*)b)[i];
+    ((int*)a)[i] += ((int*)b)[i];
+}
+
+void vec32_addvv_i32_vector_ext_scalarized(v4int * restrict a,
+                                          v4int * restrict b) {
+  for (int i = 0; i < 32; i++)
+    ((int*)a)[i] += ((int*)b)[i];
 }

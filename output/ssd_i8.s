@@ -32,7 +32,8 @@ sum_of_squared_diff2_:
 	vsetivli	zero, 1, e32, mf2, ta, ma
 	vslidedown.vi	v8, v8, 1
 	vmv.x.s	a1, v8
-	addw	a0, a0, a1
+	add	a0, a0, a1
+	zext.w	a0, a0
 	ret
 .Lfunc_end1:
 	.size	sum_of_squared_diff2_, .Lfunc_end1-sum_of_squared_diff2_
@@ -61,7 +62,8 @@ sum_of_squared_diff3_:
 	vsetivli	zero, 1, e32, mf2, ta, ma
 	vslidedown.vi	v8, v8, 1
 	vmv.x.s	a1, v8
-	addw	a0, a0, a1
+	add	a0, a0, a1
+	zext.w	a0, a0
 	ret
 .Lfunc_end2:
 	.size	sum_of_squared_diff3_, .Lfunc_end2-sum_of_squared_diff3_
@@ -201,6 +203,6 @@ sum_of_squared_diff8_:
 .Lfunc_end7:
 	.size	sum_of_squared_diff8_, .Lfunc_end7-sum_of_squared_diff8_
 
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git 8c3a8d17c8a154894895c48a304a04df9ece4328)"
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c4a3bd7f8b7c587813d0e54d8d2dde7385895d09)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
