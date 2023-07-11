@@ -2,10 +2,11 @@
 	.attribute	4, 16
 	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zba1p0_zbb1p0_zbc1p0_zbs1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
 	.file	"sad_stridedc_i8.c"
-	.globl	sum_of_absolute_diff1_
+	.globl	sum_of_absolute_diff1_          # -- Begin function sum_of_absolute_diff1_
 	.p2align	1
 	.type	sum_of_absolute_diff1_,@function
-sum_of_absolute_diff1_:
+sum_of_absolute_diff1_:                 # @sum_of_absolute_diff1_
+# %bb.0:                                # %entry
 	lbu	a0, 0(a0)
 	lbu	a1, 0(a1)
 	subw	a0, a0, a1
@@ -16,11 +17,12 @@ sum_of_absolute_diff1_:
 	ret
 .Lfunc_end0:
 	.size	sum_of_absolute_diff1_, .Lfunc_end0-sum_of_absolute_diff1_
-
-	.globl	sum_of_absolute_diff2_
+                                        # -- End function
+	.globl	sum_of_absolute_diff2_          # -- Begin function sum_of_absolute_diff2_
 	.p2align	1
 	.type	sum_of_absolute_diff2_,@function
-sum_of_absolute_diff2_:
+sum_of_absolute_diff2_:                 # @sum_of_absolute_diff2_
+# %bb.0:                                # %entry
 	lbu	a2, 0(a0)
 	lbu	a3, 0(a1)
 	subw	a2, a2, a3
@@ -39,11 +41,12 @@ sum_of_absolute_diff2_:
 	ret
 .Lfunc_end1:
 	.size	sum_of_absolute_diff2_, .Lfunc_end1-sum_of_absolute_diff2_
-
-	.globl	sum_of_absolute_diff3_
+                                        # -- End function
+	.globl	sum_of_absolute_diff3_          # -- Begin function sum_of_absolute_diff3_
 	.p2align	1
 	.type	sum_of_absolute_diff3_,@function
-sum_of_absolute_diff3_:
+sum_of_absolute_diff3_:                 # @sum_of_absolute_diff3_
+# %bb.0:                                # %entry
 	lbu	a2, 0(a0)
 	lbu	a3, 0(a1)
 	subw	a2, a2, a3
@@ -70,19 +73,20 @@ sum_of_absolute_diff3_:
 	ret
 .Lfunc_end2:
 	.size	sum_of_absolute_diff3_, .Lfunc_end2-sum_of_absolute_diff3_
-
+                                        # -- End function
 	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.p2align	5, 0x0                          # -- Begin function sum_of_absolute_diff4_
 .LCPI3_0:
-	.quad	64
-	.quad	0
-	.quad	128
-	.quad	192
+	.quad	64                              # 0x40
+	.quad	0                               # 0x0
+	.quad	128                             # 0x80
+	.quad	192                             # 0xc0
 	.text
 	.globl	sum_of_absolute_diff4_
 	.p2align	1
 	.type	sum_of_absolute_diff4_,@function
-sum_of_absolute_diff4_:
+sum_of_absolute_diff4_:                 # @sum_of_absolute_diff4_
+# %bb.0:                                # %entry
 	lui	a2, %hi(.LCPI3_0)
 	addi	a2, a2, %lo(.LCPI3_0)
 	vsetivli	zero, 4, e8, mf4, ta, ma
@@ -100,19 +104,20 @@ sum_of_absolute_diff4_:
 	ret
 .Lfunc_end3:
 	.size	sum_of_absolute_diff4_, .Lfunc_end3-sum_of_absolute_diff4_
-
+                                        # -- End function
 	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.p2align	5, 0x0                          # -- Begin function sum_of_absolute_diff5_
 .LCPI4_0:
-	.quad	64
-	.quad	0
-	.quad	128
-	.quad	192
+	.quad	64                              # 0x40
+	.quad	0                               # 0x0
+	.quad	128                             # 0x80
+	.quad	192                             # 0xc0
 	.text
 	.globl	sum_of_absolute_diff5_
 	.p2align	1
 	.type	sum_of_absolute_diff5_,@function
-sum_of_absolute_diff5_:
+sum_of_absolute_diff5_:                 # @sum_of_absolute_diff5_
+# %bb.0:                                # %entry
 	lui	a2, %hi(.LCPI4_0)
 	addi	a2, a2, %lo(.LCPI4_0)
 	vsetivli	zero, 4, e8, mf4, ta, ma
@@ -137,19 +142,20 @@ sum_of_absolute_diff5_:
 	ret
 .Lfunc_end4:
 	.size	sum_of_absolute_diff5_, .Lfunc_end4-sum_of_absolute_diff5_
-
+                                        # -- End function
 	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.p2align	5, 0x0                          # -- Begin function sum_of_absolute_diff6_
 .LCPI5_0:
-	.quad	64
-	.quad	0
-	.quad	128
-	.quad	192
+	.quad	64                              # 0x40
+	.quad	0                               # 0x0
+	.quad	128                             # 0x80
+	.quad	192                             # 0xc0
 	.text
 	.globl	sum_of_absolute_diff6_
 	.p2align	1
 	.type	sum_of_absolute_diff6_,@function
-sum_of_absolute_diff6_:
+sum_of_absolute_diff6_:                 # @sum_of_absolute_diff6_
+# %bb.0:                                # %entry
 	lui	a2, %hi(.LCPI5_0)
 	addi	a2, a2, %lo(.LCPI5_0)
 	vsetivli	zero, 4, e8, mf4, ta, ma
@@ -182,19 +188,20 @@ sum_of_absolute_diff6_:
 	ret
 .Lfunc_end5:
 	.size	sum_of_absolute_diff6_, .Lfunc_end5-sum_of_absolute_diff6_
-
+                                        # -- End function
 	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.p2align	5, 0x0                          # -- Begin function sum_of_absolute_diff7_
 .LCPI6_0:
-	.quad	64
-	.quad	0
-	.quad	128
-	.quad	192
+	.quad	64                              # 0x40
+	.quad	0                               # 0x0
+	.quad	128                             # 0x80
+	.quad	192                             # 0xc0
 	.text
 	.globl	sum_of_absolute_diff7_
 	.p2align	1
 	.type	sum_of_absolute_diff7_,@function
-sum_of_absolute_diff7_:
+sum_of_absolute_diff7_:                 # @sum_of_absolute_diff7_
+# %bb.0:                                # %entry
 	lui	a2, %hi(.LCPI6_0)
 	addi	a2, a2, %lo(.LCPI6_0)
 	vsetivli	zero, 4, e8, mf4, ta, ma
@@ -235,23 +242,24 @@ sum_of_absolute_diff7_:
 	ret
 .Lfunc_end6:
 	.size	sum_of_absolute_diff7_, .Lfunc_end6-sum_of_absolute_diff7_
-
+                                        # -- End function
 	.section	.rodata,"a",@progbits
-	.p2align	6, 0x0
+	.p2align	6, 0x0                          # -- Begin function sum_of_absolute_diff8_
 .LCPI7_0:
-	.quad	64
-	.quad	0
-	.quad	128
-	.quad	192
-	.quad	256
-	.quad	320
-	.quad	384
-	.quad	448
+	.quad	64                              # 0x40
+	.quad	0                               # 0x0
+	.quad	128                             # 0x80
+	.quad	192                             # 0xc0
+	.quad	256                             # 0x100
+	.quad	320                             # 0x140
+	.quad	384                             # 0x180
+	.quad	448                             # 0x1c0
 	.text
 	.globl	sum_of_absolute_diff8_
 	.p2align	1
 	.type	sum_of_absolute_diff8_,@function
-sum_of_absolute_diff8_:
+sum_of_absolute_diff8_:                 # @sum_of_absolute_diff8_
+# %bb.0:                                # %entry
 	lui	a2, %hi(.LCPI7_0)
 	addi	a2, a2, %lo(.LCPI7_0)
 	vsetivli	zero, 8, e8, mf2, ta, ma
@@ -269,7 +277,7 @@ sum_of_absolute_diff8_:
 	ret
 .Lfunc_end7:
 	.size	sum_of_absolute_diff8_, .Lfunc_end7-sum_of_absolute_diff8_
-
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git c4a3bd7f8b7c587813d0e54d8d2dde7385895d09)"
+                                        # -- End function
+	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git e2d7d988115c1b67b0175be5d6bc95153945b5be)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
