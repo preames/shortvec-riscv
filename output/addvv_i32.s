@@ -173,39 +173,39 @@ vec4_addvv_i32_vector_ext_scalarized:   # @vec4_addvv_i32_vector_ext_scalarized
 	.type	vec32_addvv_i32_vector_ext_scalarized,@function
 vec32_addvv_i32_vector_ext_scalarized:  # @vec32_addvv_i32_vector_ext_scalarized
 # %bb.0:                                # %entry
-	csrr	a4, vlenb
-	srli	a2, a4, 3
-	li	a3, 8
-	bgeu	a3, a2, .LBB10_2
+	csrr	a3, vlenb
+	srli	a2, a3, 3
+	li	a4, 8
+	bgeu	a4, a2, .LBB10_2
 # %bb.1:
-	li	a7, 0
+	li	a6, 0
 	j	.LBB10_5
 .LBB10_2:                               # %vector.ph
-	srli	t0, a4, 1
-	addiw	a2, t0, -1
+	li	a4, 60
+	mul	a2, a2, a4
 	andi	a6, a2, 32
-	xori	a7, a6, 32
-	slli	a4, a4, 1
+	srli	a7, a3, 1
+	slli	a3, a3, 1
 	vsetvli	a2, zero, e32, m2, ta, ma
-	mv	a2, a7
-	mv	a5, a0
-	mv	a3, a1
+	mv	a5, a6
+	mv	a4, a0
+	mv	a2, a1
 .LBB10_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vl2re32.v	v8, (a3)
-	vl2re32.v	v10, (a5)
+	vl2re32.v	v8, (a2)
+	vl2re32.v	v10, (a4)
 	vadd.vv	v8, v10, v8
-	vs2r.v	v8, (a5)
-	add	a3, a3, a4
-	sub	a2, a2, t0
-	add	a5, a5, a4
-	bnez	a2, .LBB10_3
+	vs2r.v	v8, (a4)
+	add	a2, a2, a3
+	sub	a5, a5, a7
+	add	a4, a4, a3
+	bnez	a5, .LBB10_3
 # %bb.4:                                # %middle.block
-	beqz	a6, .LBB10_7
+	bnez	a6, .LBB10_7
 .LBB10_5:                               # %for.body.preheader
-	sh2add	a0, a7, a0
-	sh2add	a1, a7, a1
-	addi	a2, a7, -32
+	sh2add	a0, a6, a0
+	sh2add	a1, a6, a1
+	addi	a2, a6, -32
 .LBB10_6:                               # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	lw	a3, 0(a1)
@@ -221,6 +221,6 @@ vec32_addvv_i32_vector_ext_scalarized:  # @vec32_addvv_i32_vector_ext_scalarized
 .Lfunc_end10:
 	.size	vec32_addvv_i32_vector_ext_scalarized, .Lfunc_end10-vec32_addvv_i32_vector_ext_scalarized
                                         # -- End function
-	.ident	"clang version 17.0.0 (https://github.com/llvm/llvm-project.git e2d7d988115c1b67b0175be5d6bc95153945b5be)"
+	.ident	"clang version 18.0.0 (https://github.com/llvm/llvm-project.git 660b740e4b3c4b23dfba36940ae0fe2ad41bfedf)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

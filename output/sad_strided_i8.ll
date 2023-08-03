@@ -67,24 +67,24 @@ entry:
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff4_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b, i32 noundef signext %S) local_unnamed_addr #0 {
 entry:
+  %0 = load i8, ptr %a, align 1, !tbaa !4
+  %1 = load i8, ptr %b, align 1, !tbaa !4
   %idxprom.1 = zext i32 %S to i64
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 %idxprom.1
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 %idxprom.1
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
   %mul.2 = shl i32 %S, 1
   %idxprom.2 = zext i32 %mul.2 to i64
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 %idxprom.2
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 %idxprom.2
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %mul.3 = mul i32 %S, 3
   %idxprom.3 = zext i32 %mul.3 to i64
   %arrayidx.3 = getelementptr inbounds i8, ptr %a, i64 %idxprom.3
-  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
+  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
   %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
   %8 = insertelement <4 x i8> poison, i8 %2, i64 0
   %9 = insertelement <4 x i8> %8, i8 %0, i64 1
@@ -104,24 +104,24 @@ entry:
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff5_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b, i32 noundef signext %S) local_unnamed_addr #0 {
 entry:
+  %0 = load i8, ptr %a, align 1, !tbaa !4
+  %1 = load i8, ptr %b, align 1, !tbaa !4
   %idxprom.1 = zext i32 %S to i64
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 %idxprom.1
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 %idxprom.1
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
   %mul.2 = shl i32 %S, 1
   %idxprom.2 = zext i32 %mul.2 to i64
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 %idxprom.2
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 %idxprom.2
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %mul.3 = mul i32 %S, 3
   %idxprom.3 = zext i32 %mul.3 to i64
   %arrayidx.3 = getelementptr inbounds i8, ptr %a, i64 %idxprom.3
-  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
+  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
   %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
   %8 = insertelement <4 x i8> poison, i8 %2, i64 0
   %9 = insertelement <4 x i8> %8, i8 %0, i64 1
@@ -151,24 +151,24 @@ entry:
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff6_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b, i32 noundef signext %S) local_unnamed_addr #0 {
 entry:
+  %0 = load i8, ptr %a, align 1, !tbaa !4
+  %1 = load i8, ptr %b, align 1, !tbaa !4
   %idxprom.1 = zext i32 %S to i64
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 %idxprom.1
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 %idxprom.1
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
   %mul.2 = shl i32 %S, 1
   %idxprom.2 = zext i32 %mul.2 to i64
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 %idxprom.2
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 %idxprom.2
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %mul.3 = mul i32 %S, 3
   %idxprom.3 = zext i32 %mul.3 to i64
   %arrayidx.3 = getelementptr inbounds i8, ptr %a, i64 %idxprom.3
-  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
+  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
   %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
   %8 = insertelement <4 x i8> poison, i8 %2, i64 0
   %9 = insertelement <4 x i8> %8, i8 %0, i64 1
@@ -208,24 +208,24 @@ entry:
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff7_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b, i32 noundef signext %S) local_unnamed_addr #0 {
 entry:
+  %0 = load i8, ptr %a, align 1, !tbaa !4
+  %1 = load i8, ptr %b, align 1, !tbaa !4
   %idxprom.1 = zext i32 %S to i64
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 %idxprom.1
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 %idxprom.1
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
   %mul.2 = shl i32 %S, 1
   %idxprom.2 = zext i32 %mul.2 to i64
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 %idxprom.2
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 %idxprom.2
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %mul.3 = mul i32 %S, 3
   %idxprom.3 = zext i32 %mul.3 to i64
   %arrayidx.3 = getelementptr inbounds i8, ptr %a, i64 %idxprom.3
-  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
+  %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
   %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
   %8 = insertelement <4 x i8> poison, i8 %2, i64 0
   %9 = insertelement <4 x i8> %8, i8 %0, i64 1
@@ -275,48 +275,48 @@ entry:
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff8_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b, i32 noundef signext %S) local_unnamed_addr #0 {
 entry:
+  %0 = load i8, ptr %a, align 1, !tbaa !4
+  %1 = load i8, ptr %b, align 1, !tbaa !4
   %idxprom.1 = zext i32 %S to i64
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 %idxprom.1
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 %idxprom.1
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
   %mul.2 = shl i32 %S, 1
   %idxprom.2 = zext i32 %mul.2 to i64
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 %idxprom.2
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 %idxprom.2
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
   %mul.3 = mul i32 %S, 3
   %idxprom.3 = zext i32 %mul.3 to i64
   %arrayidx.3 = getelementptr inbounds i8, ptr %a, i64 %idxprom.3
+  %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
   %arrayidx3.3 = getelementptr inbounds i8, ptr %b, i64 %idxprom.3
+  %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
   %mul.4 = shl i32 %S, 2
   %idxprom.4 = zext i32 %mul.4 to i64
   %arrayidx.4 = getelementptr inbounds i8, ptr %a, i64 %idxprom.4
+  %8 = load i8, ptr %arrayidx.4, align 1, !tbaa !4
   %arrayidx3.4 = getelementptr inbounds i8, ptr %b, i64 %idxprom.4
+  %9 = load i8, ptr %arrayidx3.4, align 1, !tbaa !4
   %mul.5 = mul i32 %S, 5
   %idxprom.5 = zext i32 %mul.5 to i64
   %arrayidx.5 = getelementptr inbounds i8, ptr %a, i64 %idxprom.5
+  %10 = load i8, ptr %arrayidx.5, align 1, !tbaa !4
   %arrayidx3.5 = getelementptr inbounds i8, ptr %b, i64 %idxprom.5
+  %11 = load i8, ptr %arrayidx3.5, align 1, !tbaa !4
   %mul.6 = mul i32 %S, 6
   %idxprom.6 = zext i32 %mul.6 to i64
   %arrayidx.6 = getelementptr inbounds i8, ptr %a, i64 %idxprom.6
+  %12 = load i8, ptr %arrayidx.6, align 1, !tbaa !4
   %arrayidx3.6 = getelementptr inbounds i8, ptr %b, i64 %idxprom.6
+  %13 = load i8, ptr %arrayidx3.6, align 1, !tbaa !4
   %mul.7 = mul i32 %S, 7
   %idxprom.7 = zext i32 %mul.7 to i64
   %arrayidx.7 = getelementptr inbounds i8, ptr %a, i64 %idxprom.7
-  %arrayidx3.7 = getelementptr inbounds i8, ptr %b, i64 %idxprom.7
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
-  %6 = load i8, ptr %arrayidx.3, align 1, !tbaa !4
-  %7 = load i8, ptr %arrayidx3.3, align 1, !tbaa !4
-  %8 = load i8, ptr %arrayidx.4, align 1, !tbaa !4
-  %9 = load i8, ptr %arrayidx3.4, align 1, !tbaa !4
-  %10 = load i8, ptr %arrayidx.5, align 1, !tbaa !4
-  %11 = load i8, ptr %arrayidx3.5, align 1, !tbaa !4
-  %12 = load i8, ptr %arrayidx.6, align 1, !tbaa !4
-  %13 = load i8, ptr %arrayidx3.6, align 1, !tbaa !4
   %14 = load i8, ptr %arrayidx.7, align 1, !tbaa !4
+  %arrayidx3.7 = getelementptr inbounds i8, ptr %b, i64 %idxprom.7
   %15 = load i8, ptr %arrayidx3.7, align 1, !tbaa !4
   %16 = insertelement <8 x i8> poison, i8 %2, i64 0
   %17 = insertelement <8 x i8> %16, i8 %0, i64 1
@@ -356,7 +356,7 @@ declare <8 x i8> @llvm.abs.v8i8(<8 x i8>, i1 immarg) #1
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.vector.reduce.add.v8i32(<8 x i32>) #1
 
-attributes #0 = { mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zba,+zbb,+zbc,+zbs,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-smaia,-experimental-ssaia,-experimental-zacas,-experimental-zfa,-experimental-zfbfmin,-experimental-zicond,-experimental-zihintntl,-experimental-ztso,-experimental-zvbb,-experimental-zvbc,-experimental-zvfbfmin,-experimental-zvfbfwma,-experimental-zvfh,-experimental-zvkg,-experimental-zvkn,-experimental-zvknc,-experimental-zvkned,-experimental-zvkng,-experimental-zvknha,-experimental-zvknhb,-experimental-zvks,-experimental-zvksc,-experimental-zvksed,-experimental-zvksg,-experimental-zvksh,-experimental-zvkt,-h,-save-restore,-svinval,-svnapot,-svpbmt,-xsfcie,-xsfvcp,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-zawrs,-zbkb,-zbkc,-zbkx,-zca,-zcb,-zcd,-zcf,-zcmp,-zcmt,-zdinx,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zicbom,-zicbop,-zicboz,-zicntr,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
+attributes #0 = { mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zba,+zbb,+zbc,+zbs,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-smaia,-experimental-ssaia,-experimental-zacas,-experimental-zfa,-experimental-zfbfmin,-experimental-zicond,-experimental-zihintntl,-experimental-ztso,-experimental-zvbb,-experimental-zvbc,-experimental-zvfbfmin,-experimental-zvfbfwma,-experimental-zvkg,-experimental-zvkn,-experimental-zvknc,-experimental-zvkned,-experimental-zvkng,-experimental-zvknha,-experimental-zvknhb,-experimental-zvks,-experimental-zvksc,-experimental-zvksed,-experimental-zvksg,-experimental-zvksh,-experimental-zvkt,-h,-save-restore,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvmac,-xcvsimd,-xsfcie,-xsfvcp,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-zawrs,-zbkb,-zbkc,-zbkx,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zicbom,-zicbop,-zicboz,-zicntr,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvfh,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
 attributes #1 = { nocallback nofree nosync nounwind speculatable willreturn memory(none) }
 
 !llvm.module.flags = !{!0, !1, !2}
@@ -365,7 +365,7 @@ attributes #1 = { nocallback nofree nosync nounwind speculatable willreturn memo
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 1, !"target-abi", !"lp64d"}
 !2 = !{i32 8, !"SmallDataLimit", i32 8}
-!3 = !{!"clang version 17.0.0 (https://github.com/llvm/llvm-project.git e2d7d988115c1b67b0175be5d6bc95153945b5be)"}
+!3 = !{!"clang version 18.0.0 (https://github.com/llvm/llvm-project.git 660b740e4b3c4b23dfba36940ae0fe2ad41bfedf)"}
 !4 = !{!5, !5, i64 0}
 !5 = !{!"omnipotent char", !6, i64 0}
 !6 = !{!"Simple C/C++ TBAA"}
