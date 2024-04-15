@@ -1,6 +1,6 @@
 	.text
 	.attribute	4, 16
-	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zba1p0_zbb1p0_zbc1p0_zbs1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
+	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zic64b1p0_zicbom1p0_zicbop1p0_zicboz1p0_ziccamoa1p0_ziccif1p0_zicclsm1p0_ziccrse1p0_zicntr2p0_zicsr2p0_zihintpause2p0_zihpm2p0_zmmul1p0_za64rs1p0_zfhmin1p0_zba1p0_zbb1p0_zbs1p0_zkt1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
 	.file	"sad_strided_i8.c"
 	.globl	sum_of_absolute_diff1_          # -- Begin function sum_of_absolute_diff1_
 	.p2align	1
@@ -9,7 +9,7 @@ sum_of_absolute_diff1_:                 # @sum_of_absolute_diff1_
 # %bb.0:                                # %entry
 	lbu	a0, 0(a0)
 	lbu	a1, 0(a1)
-	subw	a0, a0, a1
+	sub	a0, a0, a1
 	sext.b	a0, a0
 	neg	a1, a0
 	max	a0, a0, a1
@@ -25,7 +25,7 @@ sum_of_absolute_diff2_:                 # @sum_of_absolute_diff2_
 # %bb.0:                                # %entry
 	lbu	a3, 0(a0)
 	lbu	a4, 0(a1)
-	subw	a3, a3, a4
+	sub	a3, a3, a4
 	sext.b	a3, a3
 	add.uw	a0, a2, a0
 	lbu	a0, 0(a0)
@@ -34,7 +34,7 @@ sum_of_absolute_diff2_:                 # @sum_of_absolute_diff2_
 	neg	a2, a3
 	max	a2, a3, a2
 	sext.b	a2, a2
-	subw	a0, a0, a1
+	sub	a0, a0, a1
 	sext.b	a0, a0
 	neg	a1, a0
 	max	a0, a0, a1
@@ -51,7 +51,7 @@ sum_of_absolute_diff3_:                 # @sum_of_absolute_diff3_
 # %bb.0:                                # %entry
 	lbu	a3, 0(a0)
 	lbu	a4, 0(a1)
-	subw	a3, a3, a4
+	sub	a3, a3, a4
 	sext.b	a3, a3
 	add.uw	a4, a2, a0
 	lbu	a6, 0(a4)
@@ -60,7 +60,7 @@ sum_of_absolute_diff3_:                 # @sum_of_absolute_diff3_
 	neg	a4, a3
 	max	a3, a3, a4
 	sext.b	a3, a3
-	subw	a4, a6, a5
+	sub	a4, a6, a5
 	sext.b	a4, a4
 	neg	a5, a4
 	slli	a2, a2, 1
@@ -71,7 +71,7 @@ sum_of_absolute_diff3_:                 # @sum_of_absolute_diff3_
 	max	a2, a4, a5
 	sext.b	a2, a2
 	add	a2, a2, a3
-	subw	a0, a0, a1
+	sub	a0, a0, a1
 	sext.b	a0, a0
 	neg	a1, a0
 	max	a0, a0, a1
@@ -86,39 +86,45 @@ sum_of_absolute_diff3_:                 # @sum_of_absolute_diff3_
 	.type	sum_of_absolute_diff4_,@function
 sum_of_absolute_diff4_:                 # @sum_of_absolute_diff4_
 # %bb.0:                                # %entry
-	lbu	a7, 0(a0)
-	lbu	a6, 0(a1)
-	add.uw	a5, a2, a0
+	lbu	a3, 0(a0)
+	lbu	a4, 0(a1)
+	sub	a3, a3, a4
+	add.uw	a4, a2, a0
+	lbu	a6, 0(a4)
+	add.uw	a5, a2, a1
 	lbu	a5, 0(a5)
-	add.uw	a4, a2, a1
-	lbu	t0, 0(a4)
-	slli	a3, a2, 1
-	add.uw	a4, a3, a0
-	lbu	a4, 0(a4)
-	add.uw	a3, a3, a1
-	lbu	a3, 0(a3)
+	sext.b	a3, a3
+	neg	a4, a3
+	max	a7, a3, a4
+	sub	a4, a6, a5
+	sext.b	a4, a4
+	neg	a5, a4
+	max	a6, a4, a5
+	slli	a5, a2, 1
+	add.uw	a3, a5, a0
+	lbu	t0, 0(a3)
+	add.uw	a5, a5, a1
+	lbu	a5, 0(a5)
+	sext.b	a4, a7
+	sext.b	a3, a6
+	add	a3, a3, a4
+	sub	a4, t0, a5
+	sext.b	a4, a4
+	neg	a5, a4
 	sh1add	a2, a2, a2
 	add.uw	a0, a2, a0
 	lbu	a0, 0(a0)
 	add.uw	a1, a2, a1
 	lbu	a1, 0(a1)
-	vsetivli	zero, 4, e8, mf4, ta, ma
-	vslide1down.vx	v8, v8, a5
-	vslide1down.vx	v8, v8, a7
-	vslide1down.vx	v8, v8, a4
-	vslide1down.vx	v8, v8, a0
-	vslide1down.vx	v9, v8, t0
-	vslide1down.vx	v9, v9, a6
-	vslide1down.vx	v9, v9, a3
-	vslide1down.vx	v9, v9, a1
-	vsub.vv	v8, v8, v9
-	vrsub.vi	v9, v8, 0
-	vmax.vv	v8, v8, v9
-	vsetvli	zero, zero, e32, m1, ta, ma
-	vsext.vf4	v9, v8
-	vmv.s.x	v8, zero
-	vredsum.vs	v8, v9, v8
-	vmv.x.s	a0, v8
+	max	a2, a4, a5
+	sext.b	a2, a2
+	add	a2, a2, a3
+	sub	a0, a0, a1
+	sext.b	a0, a0
+	neg	a1, a0
+	max	a0, a0, a1
+	sext.b	a0, a0
+	add	a0, a0, a2
 	ret
 .Lfunc_end3:
 	.size	sum_of_absolute_diff4_, .Lfunc_end3-sum_of_absolute_diff4_
@@ -128,49 +134,34 @@ sum_of_absolute_diff4_:                 # @sum_of_absolute_diff4_
 	.type	sum_of_absolute_diff5_,@function
 sum_of_absolute_diff5_:                 # @sum_of_absolute_diff5_
 # %bb.0:                                # %entry
-	lbu	a7, 0(a0)
-	lbu	a6, 0(a1)
-	add.uw	a5, a2, a0
-	lbu	t1, 0(a5)
-	add.uw	a4, a2, a1
-	lbu	t0, 0(a4)
-	slli	a3, a2, 1
-	add.uw	a4, a3, a0
-	lbu	a4, 0(a4)
-	add.uw	a3, a3, a1
-	lbu	t2, 0(a3)
+	lbu	a3, 0(a0)
+	lbu	a4, 0(a1)
+	sub	a3, a3, a4
+	sext.b	a3, a3
+	slli	a4, a2, 33
+	add.uw	a4, a2, a4
 	sh1add	a5, a2, a2
-	add.uw	a3, a5, a0
-	lbu	a3, 0(a3)
-	add.uw	a5, a5, a1
-	lbu	a5, 0(a5)
+	slli	a2, a2, 34
+	add.uw	a2, a5, a2
+	vsetivli	zero, 2, e64, m1, ta, ma
+	vmv.v.x	v8, a4
+	vslide1down.vx	v8, v8, a2
 	vsetivli	zero, 4, e8, mf4, ta, ma
-	vslide1down.vx	v8, v8, t1
-	vslide1down.vx	v8, v8, a7
-	vslide1down.vx	v8, v8, a4
-	vslide1down.vx	v8, v8, a3
-	vslide1down.vx	v9, v8, t0
-	vslide1down.vx	v9, v9, a6
-	vslide1down.vx	v9, v9, t2
-	vslide1down.vx	v9, v9, a5
-	vsub.vv	v8, v8, v9
+	vluxei32.v	v9, (a0), v8
+	vluxei32.v	v10, (a1), v8
+	neg	a0, a3
+	max	a0, a3, a0
+	sext.b	a0, a0
+	vsub.vv	v8, v9, v10
 	vrsub.vi	v9, v8, 0
 	vmax.vv	v8, v8, v9
-	vsetvli	zero, zero, e32, m1, ta, ma
-	slli	a2, a2, 2
-	add.uw	a0, a2, a0
-	lbu	a0, 0(a0)
-	add.uw	a1, a2, a1
-	lbu	a1, 0(a1)
-	vsext.vf4	v9, v8
-	subw	a0, a0, a1
-	sext.b	a0, a0
-	neg	a1, a0
-	max	a0, a0, a1
-	sext.b	a0, a0
-	vmv.s.x	v8, a0
-	vredsum.vs	v8, v9, v8
-	vmv.x.s	a0, v8
+	vsetvli	zero, zero, e16, mf2, ta, ma
+	vmv.s.x	v9, zero
+	vsetvli	zero, zero, e8, mf4, ta, ma
+	vwredsum.vs	v8, v8, v9
+	vsetvli	zero, zero, e16, mf2, ta, ma
+	vmv.x.s	a1, v8
+	add	a0, a0, a1
 	ret
 .Lfunc_end4:
 	.size	sum_of_absolute_diff5_, .Lfunc_end4-sum_of_absolute_diff5_
@@ -180,60 +171,45 @@ sum_of_absolute_diff5_:                 # @sum_of_absolute_diff5_
 	.type	sum_of_absolute_diff6_,@function
 sum_of_absolute_diff6_:                 # @sum_of_absolute_diff6_
 # %bb.0:                                # %entry
-	lbu	a7, 0(a0)
-	lbu	a6, 0(a1)
-	add.uw	a5, a2, a0
-	lbu	t1, 0(a5)
-	add.uw	a4, a2, a1
-	lbu	t0, 0(a4)
-	slli	a3, a2, 1
-	add.uw	a4, a3, a0
-	lbu	a4, 0(a4)
-	add.uw	a3, a3, a1
-	lbu	t2, 0(a3)
+	lbu	a3, 0(a0)
+	lbu	a4, 0(a1)
+	sub	a3, a3, a4
+	sext.b	a3, a3
+	neg	a4, a3
+	max	a3, a3, a4
+	sext.b	a6, a3
+	slli	a4, a2, 33
+	add.uw	a4, a2, a4
 	sh1add	a5, a2, a2
-	add.uw	a3, a5, a0
-	lbu	a3, 0(a3)
-	add.uw	a5, a5, a1
-	lbu	a5, 0(a5)
-	vsetivli	zero, 4, e8, mf4, ta, ma
-	vslide1down.vx	v8, v8, t1
-	vslide1down.vx	v8, v8, a7
-	vslide1down.vx	v8, v8, a4
+	slli	a3, a2, 34
+	add.uw	a3, a5, a3
+	vsetivli	zero, 2, e64, m1, ta, ma
+	vmv.v.x	v8, a4
 	vslide1down.vx	v8, v8, a3
-	vslide1down.vx	v9, v8, t0
-	vslide1down.vx	v9, v9, a6
-	vslide1down.vx	v9, v9, t2
-	vslide1down.vx	v9, v9, a5
-	vsub.vv	v8, v8, v9
-	vrsub.vi	v9, v8, 0
-	vmax.vv	v8, v8, v9
-	vsetvli	zero, zero, e32, m1, ta, ma
-	slli	a3, a2, 2
-	add.uw	a4, a3, a0
-	lbu	a4, 0(a4)
-	add.uw	a3, a3, a1
-	lbu	a3, 0(a3)
-	vsext.vf4	v9, v8
-	subw	a4, a4, a3
-	sext.b	a3, a4
+	vsetivli	zero, 4, e8, mf4, ta, ma
+	vluxei32.v	v9, (a0), v8
+	vluxei32.v	v10, (a1), v8
 	sh2add	a2, a2, a2
 	add.uw	a0, a2, a0
 	lbu	a0, 0(a0)
 	add.uw	a1, a2, a1
 	lbu	a1, 0(a1)
-	neg	a2, a3
-	max	a2, a3, a2
-	sext.b	a2, a2
-	subw	a0, a0, a1
+	vsub.vv	v8, v9, v10
+	vrsub.vi	v9, v8, 0
+	vmax.vv	v8, v8, v9
+	sub	a0, a0, a1
 	sext.b	a0, a0
 	neg	a1, a0
 	max	a0, a0, a1
 	sext.b	a0, a0
-	vmv.s.x	v8, a2
-	vredsum.vs	v8, v9, v8
+	vsetvli	zero, zero, e16, mf2, ta, ma
+	vmv.s.x	v9, zero
+	vsetvli	zero, zero, e8, mf4, ta, ma
+	vwredsum.vs	v8, v8, v9
+	vsetvli	zero, zero, e16, mf2, ta, ma
 	vmv.x.s	a1, v8
-	addw	a0, a0, a1
+	add	a0, a0, a6
+	add	a0, a0, a1
 	ret
 .Lfunc_end5:
 	.size	sum_of_absolute_diff6_, .Lfunc_end5-sum_of_absolute_diff6_
@@ -243,42 +219,47 @@ sum_of_absolute_diff6_:                 # @sum_of_absolute_diff6_
 	.type	sum_of_absolute_diff7_,@function
 sum_of_absolute_diff7_:                 # @sum_of_absolute_diff7_
 # %bb.0:                                # %entry
-	lbu	a7, 0(a0)
-	lbu	a6, 0(a1)
-	add.uw	a5, a2, a0
-	lbu	t1, 0(a5)
-	add.uw	a4, a2, a1
-	lbu	t0, 0(a4)
-	slli	a3, a2, 1
-	add.uw	a4, a3, a0
-	lbu	t3, 0(a4)
-	add.uw	a3, a3, a1
-	lbu	t2, 0(a3)
-	sh1add	t4, a2, a2
-	add.uw	a3, t4, a0
-	lbu	a3, 0(a3)
-	add.uw	a4, t4, a1
+	lbu	a6, 0(a0)
+	add.uw	a4, a2, a0
 	lbu	a4, 0(a4)
-	vsetivli	zero, 4, e8, mf4, ta, ma
-	vslide1down.vx	v8, v8, t1
-	vslide1down.vx	v8, v8, a7
-	vslide1down.vx	v8, v8, t3
-	vslide1down.vx	v8, v8, a3
-	vslide1down.vx	v9, v8, t0
-	vslide1down.vx	v9, v9, a6
-	vslide1down.vx	v9, v9, t2
-	vslide1down.vx	v9, v9, a4
-	vsub.vv	v8, v8, v9
-	vrsub.vi	v9, v8, 0
-	vmax.vv	v8, v8, v9
-	vsetvli	zero, zero, e32, m1, ta, ma
+	add.uw	a5, a2, a1
+	lbu	a5, 0(a5)
+	lbu	a3, 0(a1)
+	slli	a4, a4, 8
+	or	a7, a6, a4
+	slli	a5, a5, 8
+	or	a6, a3, a5
+	slli	a5, a2, 1
+	add.uw	a3, a5, a0
+	lbu	a3, 0(a3)
+	sh1add	t0, a2, a2
+	add.uw	a4, t0, a0
+	lbu	a4, 0(a4)
+	add.uw	a5, a5, a1
+	lbu	t1, 0(a5)
+	slli	a3, a3, 16
+	slli	a4, a4, 24
+	add.uw	a5, t0, a1
+	lbu	a5, 0(a5)
+	or	a3, a3, a4
+	or	a3, a7, a3
+	slli	t1, t1, 16
+	slli	a5, a5, 24
+	or	a4, a5, t1
+	or	a4, a6, a4
+	vsetivli	zero, 1, e32, m1, ta, ma
+	vmv.s.x	v8, a3
+	vmv.s.x	v9, a4
 	slli	a3, a2, 2
 	add.uw	a4, a3, a0
 	lbu	a4, 0(a4)
 	add.uw	a3, a3, a1
 	lbu	a3, 0(a3)
-	vsext.vf4	v9, v8
-	subw	a4, a4, a3
+	vsetivli	zero, 4, e8, mf4, ta, ma
+	vsub.vv	v8, v8, v9
+	vrsub.vi	v9, v8, 0
+	vmax.vv	v8, v8, v9
+	sub	a4, a4, a3
 	sext.b	a3, a4
 	sh2add	a2, a2, a2
 	add.uw	a4, a2, a0
@@ -288,21 +269,23 @@ sum_of_absolute_diff7_:                 # @sum_of_absolute_diff7_
 	neg	a5, a3
 	max	a3, a3, a5
 	sext.b	a3, a3
-	subw	a4, a4, a2
+	sub	a4, a4, a2
 	sext.b	a2, a4
-	slli	t4, t4, 1
-	add.uw	a0, t4, a0
+	slli	t0, t0, 1
+	add.uw	a0, t0, a0
 	lbu	a0, 0(a0)
-	add.uw	a1, t4, a1
+	add.uw	a1, t0, a1
 	lbu	a1, 0(a1)
 	neg	a4, a2
 	max	a2, a2, a4
 	sext.b	a2, a2
-	subw	a0, a0, a1
+	sub	a0, a0, a1
 	sext.b	a0, a0
 	neg	a1, a0
 	max	a0, a0, a1
 	sext.b	a0, a0
+	vsetvli	zero, zero, e32, m1, ta, ma
+	vsext.vf4	v9, v8
 	vmv.s.x	v8, a3
 	vredsum.vs	v8, v9, v8
 	vmv.x.s	a1, v8
@@ -317,64 +300,49 @@ sum_of_absolute_diff7_:                 # @sum_of_absolute_diff7_
 	.type	sum_of_absolute_diff8_,@function
 sum_of_absolute_diff8_:                 # @sum_of_absolute_diff8_
 # %bb.0:                                # %entry
-	addi	sp, sp, -32
-	sd	s0, 24(sp)                      # 8-byte Folded Spill
-	sd	s1, 16(sp)                      # 8-byte Folded Spill
-	sd	s2, 8(sp)                       # 8-byte Folded Spill
-	lbu	t0, 0(a0)
-	lbu	a6, 0(a1)
-	add.uw	a5, a2, a0
-	lbu	t2, 0(a5)
-	add.uw	a4, a2, a1
-	lbu	a7, 0(a4)
-	slli	a4, a2, 1
-	add.uw	a3, a4, a0
-	lbu	t3, 0(a3)
-	add.uw	a4, a4, a1
-	lbu	t1, 0(a4)
-	sh1add	a4, a2, a2
-	add.uw	a5, a4, a0
-	lbu	t5, 0(a5)
-	add.uw	a3, a4, a1
-	lbu	t4, 0(a3)
-	slli	a3, a2, 2
-	add.uw	a5, a3, a0
+	lbu	a6, 0(a0)
+	add.uw	a4, a2, a0
+	lbu	a4, 0(a4)
+	add.uw	a5, a2, a1
 	lbu	a5, 0(a5)
-	add.uw	a3, a3, a1
-	lbu	t6, 0(a3)
-	sh2add	a3, a2, a2
-	add.uw	s0, a3, a0
-	lbu	s0, 0(s0)
-	add.uw	a3, a3, a1
-	lbu	s2, 0(a3)
-	slli	a4, a4, 1
-	add.uw	s1, a4, a0
-	lbu	s1, 0(s1)
+	lbu	a3, 0(a1)
+	slli	a4, a4, 8
+	or	a7, a6, a4
+	slli	a5, a5, 8
+	or	a6, a3, a5
+	slli	a5, a2, 1
+	add.uw	a3, a5, a0
+	lbu	t0, 0(a3)
+	sh1add	a4, a2, a2
+	add.uw	a3, a4, a0
+	lbu	a3, 0(a3)
+	add.uw	a5, a5, a1
+	lbu	a5, 0(a5)
+	slli	t0, t0, 16
+	slli	a3, a3, 24
 	add.uw	a4, a4, a1
 	lbu	a4, 0(a4)
-	slli	a3, a2, 3
-	subw	a3, a3, a2
-	add.uw	a0, a3, a0
-	lbu	a0, 0(a0)
-	add.uw	a1, a3, a1
-	lbu	a1, 0(a1)
+	or	a3, a3, t0
+	or	a3, a7, a3
+	slli	a5, a5, 16
+	slli	a4, a4, 24
+	or	a4, a4, a5
+	vsetivli	zero, 4, e32, m1, ta, ma
+	vid.v	v8
+	vadd.vi	v8, v8, 4
+	vmul.vx	v8, v8, a2
+	vsetvli	zero, zero, e8, mf4, ta, ma
+	vluxei32.v	v9, (a0), v8
+	or	a0, a6, a4
+	vluxei32.v	v10, (a1), v8
+	vsetvli	zero, zero, e64, m2, ta, ma
+	vmv.s.x	v8, a3
 	vsetivli	zero, 8, e8, mf2, ta, ma
-	vslide1down.vx	v8, v8, t2
-	vslide1down.vx	v8, v8, t0
-	vslide1down.vx	v8, v8, t3
-	vslide1down.vx	v8, v8, t5
-	vslide1down.vx	v8, v8, a5
-	vslide1down.vx	v8, v8, s0
-	vslide1down.vx	v8, v8, s1
-	vslide1down.vx	v8, v8, a0
-	vslide1down.vx	v9, v8, a7
-	vslide1down.vx	v9, v9, a6
-	vslide1down.vx	v9, v9, t1
-	vslide1down.vx	v9, v9, t4
-	vslide1down.vx	v9, v9, t6
-	vslide1down.vx	v9, v9, s2
-	vslide1down.vx	v9, v9, a4
-	vslide1down.vx	v9, v9, a1
+	vslideup.vi	v8, v9, 4
+	vsetvli	zero, zero, e64, m4, ta, ma
+	vmv.s.x	v9, a0
+	vsetvli	zero, zero, e8, mf2, ta, ma
+	vslideup.vi	v9, v10, 4
 	vsub.vv	v8, v8, v9
 	vrsub.vi	v9, v8, 0
 	vmax.vv	v8, v8, v9
@@ -383,14 +351,10 @@ sum_of_absolute_diff8_:                 # @sum_of_absolute_diff8_
 	vmv.s.x	v8, zero
 	vredsum.vs	v8, v10, v8
 	vmv.x.s	a0, v8
-	ld	s0, 24(sp)                      # 8-byte Folded Reload
-	ld	s1, 16(sp)                      # 8-byte Folded Reload
-	ld	s2, 8(sp)                       # 8-byte Folded Reload
-	addi	sp, sp, 32
 	ret
 .Lfunc_end7:
 	.size	sum_of_absolute_diff8_, .Lfunc_end7-sum_of_absolute_diff8_
                                         # -- End function
-	.ident	"clang version 18.0.0 (https://github.com/llvm/llvm-project.git 660b740e4b3c4b23dfba36940ae0fe2ad41bfedf)"
+	.ident	"clang version 20.0.0git (https://github.com/llvm/llvm-project.git d3fd28a13478786b3ebf092b8ebfcfd0c5e34928)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

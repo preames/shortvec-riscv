@@ -1,6 +1,6 @@
 	.text
 	.attribute	4, 16
-	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zicsr2p0_zifencei2p0_zba1p0_zbb1p0_zbc1p0_zbs1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
+	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zic64b1p0_zicbom1p0_zicbop1p0_zicboz1p0_ziccamoa1p0_ziccif1p0_zicclsm1p0_ziccrse1p0_zicntr2p0_zicsr2p0_zihintpause2p0_zihpm2p0_zmmul1p0_za64rs1p0_zfhmin1p0_zba1p0_zbb1p0_zbs1p0_zkt1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"
 	.file	"reduce_add_i32.c"
 	.globl	reduce1_add_i32                 # -- Begin function reduce1_add_i32
 	.p2align	1
@@ -57,8 +57,8 @@ reduce4_add_i32:                        # @reduce4_add_i32
 	.type	reduce5_add_i32,@function
 reduce5_add_i32:                        # @reduce5_add_i32
 # %bb.0:                                # %entry
-	vsetivli	zero, 4, e32, m1, ta, ma
 	lw	a1, 16(a0)
+	vsetivli	zero, 4, e32, m1, ta, ma
 	vle32.v	v8, (a0)
 	vmv.s.x	v9, a1
 	vredsum.vs	v8, v8, v9
@@ -72,8 +72,8 @@ reduce5_add_i32:                        # @reduce5_add_i32
 	.type	reduce6_add_i32,@function
 reduce6_add_i32:                        # @reduce6_add_i32
 # %bb.0:                                # %entry
-	vsetivli	zero, 4, e32, m1, ta, ma
 	lw	a1, 16(a0)
+	vsetivli	zero, 4, e32, m1, ta, ma
 	vle32.v	v8, (a0)
 	lw	a0, 20(a0)
 	vmv.s.x	v9, a1
@@ -89,8 +89,8 @@ reduce6_add_i32:                        # @reduce6_add_i32
 	.type	reduce7_add_i32,@function
 reduce7_add_i32:                        # @reduce7_add_i32
 # %bb.0:                                # %entry
-	vsetivli	zero, 4, e32, m1, ta, ma
 	lw	a1, 16(a0)
+	vsetivli	zero, 4, e32, m1, ta, ma
 	vle32.v	v8, (a0)
 	lw	a2, 20(a0)
 	lw	a0, 24(a0)
@@ -117,6 +117,6 @@ reduce8_add_i32:                        # @reduce8_add_i32
 .Lfunc_end7:
 	.size	reduce8_add_i32, .Lfunc_end7-reduce8_add_i32
                                         # -- End function
-	.ident	"clang version 18.0.0 (https://github.com/llvm/llvm-project.git 660b740e4b3c4b23dfba36940ae0fe2ad41bfedf)"
+	.ident	"clang version 20.0.0git (https://github.com/llvm/llvm-project.git d3fd28a13478786b3ebf092b8ebfcfd0c5e34928)"
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

@@ -3,29 +3,29 @@ source_filename = "sad_stridedc_i8.c"
 target datalayout = "e-m:e-p:64:64-i64:64-i128:128-n32:64-S128"
 target triple = "riscv64-unknown-unknown"
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff1_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
+  %0 = load i8, ptr %a, align 1, !tbaa !6
+  %1 = load i8, ptr %b, align 1, !tbaa !6
   %sub.i = sub i8 %0, %1
   %spec.select.i = tail call i8 @llvm.abs.i8(i8 %sub.i, i1 false)
   %conv = sext i8 %spec.select.i to i32
   ret i32 %conv
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff2_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
+  %0 = load i8, ptr %a, align 1, !tbaa !6
+  %1 = load i8, ptr %b, align 1, !tbaa !6
   %sub.i = sub i8 %0, %1
   %spec.select.i = tail call i8 @llvm.abs.i8(i8 %sub.i, i1 false)
   %conv = sext i8 %spec.select.i to i32
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 64
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !6
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 64
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !6
   %sub.i.1 = sub i8 %2, %3
   %spec.select.i.1 = tail call i8 @llvm.abs.i8(i8 %sub.i.1, i1 false)
   %conv.1 = sext i8 %spec.select.i.1 to i32
@@ -33,26 +33,26 @@ entry:
   ret i32 %add.1
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff3_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = load i8, ptr %a, align 1, !tbaa !4
-  %1 = load i8, ptr %b, align 1, !tbaa !4
+  %0 = load i8, ptr %a, align 1, !tbaa !6
+  %1 = load i8, ptr %b, align 1, !tbaa !6
   %sub.i = sub i8 %0, %1
   %spec.select.i = tail call i8 @llvm.abs.i8(i8 %sub.i, i1 false)
   %conv = sext i8 %spec.select.i to i32
   %arrayidx.1 = getelementptr inbounds i8, ptr %a, i64 64
-  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !4
+  %2 = load i8, ptr %arrayidx.1, align 1, !tbaa !6
   %arrayidx3.1 = getelementptr inbounds i8, ptr %b, i64 64
-  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !4
+  %3 = load i8, ptr %arrayidx3.1, align 1, !tbaa !6
   %sub.i.1 = sub i8 %2, %3
   %spec.select.i.1 = tail call i8 @llvm.abs.i8(i8 %sub.i.1, i1 false)
   %conv.1 = sext i8 %spec.select.i.1 to i32
   %add.1 = add nsw i32 %conv, %conv.1
   %arrayidx.2 = getelementptr inbounds i8, ptr %a, i64 128
-  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !4
+  %4 = load i8, ptr %arrayidx.2, align 1, !tbaa !6
   %arrayidx3.2 = getelementptr inbounds i8, ptr %b, i64 128
-  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !4
+  %5 = load i8, ptr %arrayidx3.2, align 1, !tbaa !6
   %sub.i.2 = sub i8 %4, %5
   %spec.select.i.2 = tail call i8 @llvm.abs.i8(i8 %sub.i.2, i1 false)
   %conv.2 = sext i8 %spec.select.i.2 to i32
@@ -60,158 +60,134 @@ entry:
   ret i32 %add.2
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff4_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = insertelement <4 x ptr> poison, ptr %a, i64 0
-  %1 = shufflevector <4 x ptr> %0, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %2 = getelementptr i8, <4 x ptr> %1, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %3 = insertelement <4 x ptr> poison, ptr %b, i64 0
-  %4 = shufflevector <4 x ptr> %3, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %5 = getelementptr i8, <4 x ptr> %4, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %6 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %2, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %7 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %5, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %8 = sub <4 x i8> %6, %7
-  %9 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %8, i1 false)
-  %10 = sext <4 x i8> %9 to <4 x i32>
-  %11 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %10)
-  ret i32 %11
+  %0 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %a, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %1 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %b, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %2 = sub <4 x i8> %0, %1
+  %3 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %2, i1 false)
+  %4 = sext <4 x i8> %3 to <4 x i16>
+  %5 = tail call i16 @llvm.vector.reduce.add.v4i16(<4 x i16> %4)
+  %6 = sext i16 %5 to i32
+  ret i32 %6
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff5_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = insertelement <4 x ptr> poison, ptr %a, i64 0
-  %1 = shufflevector <4 x ptr> %0, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %2 = getelementptr i8, <4 x ptr> %1, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %3 = insertelement <4 x ptr> poison, ptr %b, i64 0
-  %4 = shufflevector <4 x ptr> %3, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %5 = getelementptr i8, <4 x ptr> %4, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %6 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %2, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %7 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %5, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %8 = sub <4 x i8> %6, %7
-  %9 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %8, i1 false)
-  %10 = sext <4 x i8> %9 to <4 x i32>
+  %0 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %a, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %1 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %b, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %2 = sub <4 x i8> %0, %1
+  %3 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %2, i1 false)
   %arrayidx.4 = getelementptr inbounds i8, ptr %a, i64 256
-  %11 = load i8, ptr %arrayidx.4, align 1, !tbaa !4
+  %4 = load i8, ptr %arrayidx.4, align 1, !tbaa !6
   %arrayidx3.4 = getelementptr inbounds i8, ptr %b, i64 256
-  %12 = load i8, ptr %arrayidx3.4, align 1, !tbaa !4
-  %sub.i.4 = sub i8 %11, %12
+  %5 = load i8, ptr %arrayidx3.4, align 1, !tbaa !6
+  %sub.i.4 = sub i8 %4, %5
   %spec.select.i.4 = tail call i8 @llvm.abs.i8(i8 %sub.i.4, i1 false)
   %conv.4 = sext i8 %spec.select.i.4 to i32
-  %13 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %10)
-  %op.rdx = add i32 %13, %conv.4
+  %6 = sext <4 x i8> %3 to <4 x i16>
+  %7 = tail call i16 @llvm.vector.reduce.add.v4i16(<4 x i16> %6)
+  %8 = sext i16 %7 to i32
+  %op.rdx = add nsw i32 %8, %conv.4
   ret i32 %op.rdx
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff6_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = insertelement <4 x ptr> poison, ptr %a, i64 0
-  %1 = shufflevector <4 x ptr> %0, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %2 = getelementptr i8, <4 x ptr> %1, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %3 = insertelement <4 x ptr> poison, ptr %b, i64 0
-  %4 = shufflevector <4 x ptr> %3, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %5 = getelementptr i8, <4 x ptr> %4, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %6 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %2, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %7 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %5, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %8 = sub <4 x i8> %6, %7
-  %9 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %8, i1 false)
-  %10 = sext <4 x i8> %9 to <4 x i32>
+  %0 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %a, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %1 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %b, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %2 = sub <4 x i8> %0, %1
+  %3 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %2, i1 false)
   %arrayidx.4 = getelementptr inbounds i8, ptr %a, i64 256
-  %11 = load i8, ptr %arrayidx.4, align 1, !tbaa !4
+  %4 = load i8, ptr %arrayidx.4, align 1, !tbaa !6
   %arrayidx3.4 = getelementptr inbounds i8, ptr %b, i64 256
-  %12 = load i8, ptr %arrayidx3.4, align 1, !tbaa !4
-  %sub.i.4 = sub i8 %11, %12
+  %5 = load i8, ptr %arrayidx3.4, align 1, !tbaa !6
+  %sub.i.4 = sub i8 %4, %5
   %spec.select.i.4 = tail call i8 @llvm.abs.i8(i8 %sub.i.4, i1 false)
   %conv.4 = sext i8 %spec.select.i.4 to i32
   %arrayidx.5 = getelementptr inbounds i8, ptr %a, i64 320
-  %13 = load i8, ptr %arrayidx.5, align 1, !tbaa !4
+  %6 = load i8, ptr %arrayidx.5, align 1, !tbaa !6
   %arrayidx3.5 = getelementptr inbounds i8, ptr %b, i64 320
-  %14 = load i8, ptr %arrayidx3.5, align 1, !tbaa !4
-  %sub.i.5 = sub i8 %13, %14
+  %7 = load i8, ptr %arrayidx3.5, align 1, !tbaa !6
+  %sub.i.5 = sub i8 %6, %7
   %spec.select.i.5 = tail call i8 @llvm.abs.i8(i8 %sub.i.5, i1 false)
   %conv.5 = sext i8 %spec.select.i.5 to i32
-  %15 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %10)
-  %op.rdx = add i32 %15, %conv.4
-  %op.rdx12 = add i32 %op.rdx, %conv.5
+  %8 = sext <4 x i8> %3 to <4 x i16>
+  %9 = tail call i16 @llvm.vector.reduce.add.v4i16(<4 x i16> %8)
+  %10 = sext i16 %9 to i32
+  %op.rdx = add nsw i32 %10, %conv.4
+  %op.rdx12 = add nsw i32 %op.rdx, %conv.5
   ret i32 %op.rdx12
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff7_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = insertelement <4 x ptr> poison, ptr %a, i64 0
-  %1 = shufflevector <4 x ptr> %0, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %2 = getelementptr i8, <4 x ptr> %1, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %3 = insertelement <4 x ptr> poison, ptr %b, i64 0
-  %4 = shufflevector <4 x ptr> %3, <4 x ptr> poison, <4 x i32> zeroinitializer
-  %5 = getelementptr i8, <4 x ptr> %4, <4 x i64> <i64 64, i64 0, i64 128, i64 192>
-  %6 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %2, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %7 = tail call <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr> %5, i32 1, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, <4 x i8> poison), !tbaa !4
-  %8 = sub <4 x i8> %6, %7
-  %9 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %8, i1 false)
-  %10 = sext <4 x i8> %9 to <4 x i32>
+  %0 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %a, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %1 = tail call <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr align 1 %b, i64 64, <4 x i1> <i1 true, i1 true, i1 true, i1 true>, i32 4), !tbaa !6
+  %2 = sub <4 x i8> %0, %1
+  %3 = tail call <4 x i8> @llvm.abs.v4i8(<4 x i8> %2, i1 false)
   %arrayidx.4 = getelementptr inbounds i8, ptr %a, i64 256
-  %11 = load i8, ptr %arrayidx.4, align 1, !tbaa !4
+  %4 = load i8, ptr %arrayidx.4, align 1, !tbaa !6
   %arrayidx3.4 = getelementptr inbounds i8, ptr %b, i64 256
-  %12 = load i8, ptr %arrayidx3.4, align 1, !tbaa !4
-  %sub.i.4 = sub i8 %11, %12
+  %5 = load i8, ptr %arrayidx3.4, align 1, !tbaa !6
+  %sub.i.4 = sub i8 %4, %5
   %spec.select.i.4 = tail call i8 @llvm.abs.i8(i8 %sub.i.4, i1 false)
   %conv.4 = sext i8 %spec.select.i.4 to i32
   %arrayidx.5 = getelementptr inbounds i8, ptr %a, i64 320
-  %13 = load i8, ptr %arrayidx.5, align 1, !tbaa !4
+  %6 = load i8, ptr %arrayidx.5, align 1, !tbaa !6
   %arrayidx3.5 = getelementptr inbounds i8, ptr %b, i64 320
-  %14 = load i8, ptr %arrayidx3.5, align 1, !tbaa !4
-  %sub.i.5 = sub i8 %13, %14
+  %7 = load i8, ptr %arrayidx3.5, align 1, !tbaa !6
+  %sub.i.5 = sub i8 %6, %7
   %spec.select.i.5 = tail call i8 @llvm.abs.i8(i8 %sub.i.5, i1 false)
   %conv.5 = sext i8 %spec.select.i.5 to i32
   %arrayidx.6 = getelementptr inbounds i8, ptr %a, i64 384
-  %15 = load i8, ptr %arrayidx.6, align 1, !tbaa !4
+  %8 = load i8, ptr %arrayidx.6, align 1, !tbaa !6
   %arrayidx3.6 = getelementptr inbounds i8, ptr %b, i64 384
-  %16 = load i8, ptr %arrayidx3.6, align 1, !tbaa !4
-  %sub.i.6 = sub i8 %15, %16
+  %9 = load i8, ptr %arrayidx3.6, align 1, !tbaa !6
+  %sub.i.6 = sub i8 %8, %9
   %spec.select.i.6 = tail call i8 @llvm.abs.i8(i8 %sub.i.6, i1 false)
   %conv.6 = sext i8 %spec.select.i.6 to i32
-  %17 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %10)
-  %op.rdx = add i32 %17, %conv.4
+  %10 = sext <4 x i8> %3 to <4 x i32>
+  %11 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %10)
+  %op.rdx = add i32 %11, %conv.4
   %op.rdx12 = add nsw i32 %conv.5, %conv.6
   %op.rdx13 = add i32 %op.rdx, %op.rdx12
   ret i32 %op.rdx13
 }
 
-; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
+; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024)
 define dso_local signext i32 @sum_of_absolute_diff8_(ptr noalias nocapture noundef readonly %a, ptr noalias nocapture noundef readonly %b) local_unnamed_addr #0 {
 entry:
-  %0 = insertelement <8 x ptr> poison, ptr %a, i64 0
-  %1 = shufflevector <8 x ptr> %0, <8 x ptr> poison, <8 x i32> zeroinitializer
-  %2 = getelementptr i8, <8 x ptr> %1, <8 x i64> <i64 64, i64 0, i64 128, i64 192, i64 256, i64 320, i64 384, i64 448>
-  %3 = insertelement <8 x ptr> poison, ptr %b, i64 0
-  %4 = shufflevector <8 x ptr> %3, <8 x ptr> poison, <8 x i32> zeroinitializer
-  %5 = getelementptr i8, <8 x ptr> %4, <8 x i64> <i64 64, i64 0, i64 128, i64 192, i64 256, i64 320, i64 384, i64 448>
-  %6 = tail call <8 x i8> @llvm.masked.gather.v8i8.v8p0(<8 x ptr> %2, i32 1, <8 x i1> <i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true>, <8 x i8> poison), !tbaa !4
-  %7 = tail call <8 x i8> @llvm.masked.gather.v8i8.v8p0(<8 x ptr> %5, i32 1, <8 x i1> <i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true>, <8 x i8> poison), !tbaa !4
-  %8 = sub <8 x i8> %6, %7
-  %9 = tail call <8 x i8> @llvm.abs.v8i8(<8 x i8> %8, i1 false)
-  %10 = sext <8 x i8> %9 to <8 x i32>
-  %11 = tail call i32 @llvm.vector.reduce.add.v8i32(<8 x i32> %10)
-  ret i32 %11
+  %0 = tail call <8 x i8> @llvm.experimental.vp.strided.load.v8i8.p0.i64(ptr align 1 %a, i64 64, <8 x i1> <i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true>, i32 8), !tbaa !6
+  %1 = tail call <8 x i8> @llvm.experimental.vp.strided.load.v8i8.p0.i64(ptr align 1 %b, i64 64, <8 x i1> <i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true, i1 true>, i32 8), !tbaa !6
+  %2 = sub <8 x i8> %0, %1
+  %3 = tail call <8 x i8> @llvm.abs.v8i8(<8 x i8> %2, i1 false)
+  %4 = sext <8 x i8> %3 to <8 x i32>
+  %5 = tail call i32 @llvm.vector.reduce.add.v8i32(<8 x i32> %4)
+  ret i32 %5
 }
 
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i8 @llvm.abs.i8(i8, i1 immarg) #1
 
-; Function Attrs: nocallback nofree nosync nounwind willreturn memory(read)
-declare <4 x i8> @llvm.masked.gather.v4i8.v4p0(<4 x ptr>, i32 immarg, <4 x i1>, <4 x i8>) #2
+; Function Attrs: nocallback nofree nosync nounwind willreturn memory(argmem: read)
+declare <4 x i8> @llvm.experimental.vp.strided.load.v4i8.p0.i64(ptr nocapture, i64, <4 x i1>, i32) #2
 
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare <4 x i8> @llvm.abs.v4i8(<4 x i8>, i1 immarg) #1
 
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
+declare i16 @llvm.vector.reduce.add.v4i16(<4 x i16>) #1
+
+; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.vector.reduce.add.v4i32(<4 x i32>) #1
 
-; Function Attrs: nocallback nofree nosync nounwind willreturn memory(read)
-declare <8 x i8> @llvm.masked.gather.v8i8.v8p0(<8 x ptr>, i32 immarg, <8 x i1>, <8 x i8>) #2
+; Function Attrs: nocallback nofree nosync nounwind willreturn memory(argmem: read)
+declare <8 x i8> @llvm.experimental.vp.strided.load.v8i8.p0.i64(ptr nocapture, i64, <8 x i1>, i32) #2
 
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare <8 x i8> @llvm.abs.v8i8(<8 x i8>, i1 immarg) #1
@@ -219,17 +195,19 @@ declare <8 x i8> @llvm.abs.v8i8(<8 x i8>, i1 immarg) #1
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.vector.reduce.add.v8i32(<8 x i32>) #1
 
-attributes #0 = { mustprogress nofree nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+zba,+zbb,+zbc,+zbs,+zicsr,+zifencei,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-e,-experimental-smaia,-experimental-ssaia,-experimental-zacas,-experimental-zfa,-experimental-zfbfmin,-experimental-zicond,-experimental-zihintntl,-experimental-ztso,-experimental-zvbb,-experimental-zvbc,-experimental-zvfbfmin,-experimental-zvfbfwma,-experimental-zvkg,-experimental-zvkn,-experimental-zvknc,-experimental-zvkned,-experimental-zvkng,-experimental-zvknha,-experimental-zvknhb,-experimental-zvks,-experimental-zvksc,-experimental-zvksed,-experimental-zvksg,-experimental-zvksh,-experimental-zvkt,-h,-save-restore,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvmac,-xcvsimd,-xsfcie,-xsfvcp,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-zawrs,-zbkb,-zbkc,-zbkx,-zca,-zcb,-zcd,-zce,-zcf,-zcmp,-zcmt,-zdinx,-zfh,-zfhmin,-zfinx,-zhinx,-zhinxmin,-zicbom,-zicbop,-zicboz,-zicntr,-zihintpause,-zihpm,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-zkt,-zmmul,-zvfh,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
+attributes #0 = { mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: read) vscale_range(2,1024) "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic-rv64" "target-features"="+64bit,+a,+c,+d,+f,+m,+relax,+v,+za64rs,+zba,+zbb,+zbs,+zfhmin,+zic64b,+zicbom,+zicbop,+zicboz,+ziccamoa,+ziccif,+zicclsm,+ziccrse,+zicntr,+zicsr,+zihintpause,+zihpm,+zkt,+zmmul,+zve32f,+zve32x,+zve64d,+zve64f,+zve64x,+zvl128b,+zvl32b,+zvl64b,-b,-e,-experimental-smmpm,-experimental-smnpm,-experimental-ssnpm,-experimental-sspm,-experimental-ssqosid,-experimental-supm,-experimental-zacas,-experimental-zalasr,-experimental-zicfilp,-experimental-zicfiss,-h,-shcounterenw,-shgatpa,-shtvala,-shvsatpa,-shvstvala,-shvstvecd,-smaia,-smcdeleg,-smcsrind,-smepmp,-smstateen,-ssaia,-ssccfg,-ssccptr,-sscofpmf,-sscounterenw,-sscsrind,-ssstateen,-ssstrict,-sstc,-sstvala,-sstvecd,-ssu64xl,-svade,-svadu,-svbare,-svinval,-svnapot,-svpbmt,-xcvalu,-xcvbi,-xcvbitmanip,-xcvelw,-xcvmac,-xcvmem,-xcvsimd,-xsfcease,-xsfvcp,-xsfvfnrclipxfqf,-xsfvfwmaccqqq,-xsfvqmaccdod,-xsfvqmaccqoq,-xsifivecdiscarddlone,-xsifivecflushdlone,-xtheadba,-xtheadbb,-xtheadbs,-xtheadcmo,-xtheadcondmov,-xtheadfmemidx,-xtheadmac,-xtheadmemidx,-xtheadmempair,-xtheadsync,-xtheadvdot,-xventanacondops,-xwchc,-za128rs,-zaamo,-zabha,-zalrsc,-zama16b,-zawrs,-zbc,-zbkb,-zbkc,-zbkx,-zca,-zcb,-zcd,-zce,-zcf,-zcmop,-zcmp,-zcmt,-zdinx,-zfa,-zfbfmin,-zfh,-zfinx,-zhinx,-zhinxmin,-zicond,-zifencei,-zihintntl,-zimop,-zk,-zkn,-zknd,-zkne,-zknh,-zkr,-zks,-zksed,-zksh,-ztso,-zvbb,-zvbc,-zvfbfmin,-zvfbfwma,-zvfh,-zvfhmin,-zvkb,-zvkg,-zvkn,-zvknc,-zvkned,-zvkng,-zvknha,-zvknhb,-zvks,-zvksc,-zvksed,-zvksg,-zvksh,-zvkt,-zvl1024b,-zvl16384b,-zvl2048b,-zvl256b,-zvl32768b,-zvl4096b,-zvl512b,-zvl65536b,-zvl8192b" }
 attributes #1 = { nocallback nofree nosync nounwind speculatable willreturn memory(none) }
-attributes #2 = { nocallback nofree nosync nounwind willreturn memory(read) }
+attributes #2 = { nocallback nofree nosync nounwind willreturn memory(argmem: read) }
 
-!llvm.module.flags = !{!0, !1, !2}
-!llvm.ident = !{!3}
+!llvm.module.flags = !{!0, !1, !2, !4}
+!llvm.ident = !{!5}
 
 !0 = !{i32 1, !"wchar_size", i32 4}
 !1 = !{i32 1, !"target-abi", !"lp64d"}
-!2 = !{i32 8, !"SmallDataLimit", i32 8}
-!3 = !{!"clang version 18.0.0 (https://github.com/llvm/llvm-project.git 660b740e4b3c4b23dfba36940ae0fe2ad41bfedf)"}
-!4 = !{!5, !5, i64 0}
-!5 = !{!"omnipotent char", !6, i64 0}
-!6 = !{!"Simple C/C++ TBAA"}
+!2 = !{i32 6, !"riscv-isa", !3}
+!3 = !{!"rv64i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_v1p0_zic64b1p0_zicbom1p0_zicbop1p0_zicboz1p0_ziccamoa1p0_ziccif1p0_zicclsm1p0_ziccrse1p0_zicntr2p0_zicsr2p0_zihintpause2p0_zihpm2p0_zmmul1p0_za64rs1p0_zfhmin1p0_zba1p0_zbb1p0_zbs1p0_zkt1p0_zve32f1p0_zve32x1p0_zve64d1p0_zve64f1p0_zve64x1p0_zvl128b1p0_zvl32b1p0_zvl64b1p0"}
+!4 = !{i32 8, !"SmallDataLimit", i32 8}
+!5 = !{!"clang version 20.0.0git (https://github.com/llvm/llvm-project.git d3fd28a13478786b3ebf092b8ebfcfd0c5e34928)"}
+!6 = !{!7, !7, i64 0}
+!7 = !{!"omnipotent char", !8, i64 0}
+!8 = !{!"Simple C/C++ TBAA"}

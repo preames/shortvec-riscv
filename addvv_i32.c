@@ -41,7 +41,7 @@ void vec8_addvv_i32(int * restrict a, int *b) {
 
 typedef int v4int __attribute__ ((vector_size (sizeof(int)*32)));
 typedef long v4long __attribute__ ((vector_size (sizeof(long)*32)));
-void vec4_addvv_i32_vector_ext(v4int * restrict a, v4int * restrict b) {
+void vec32_addvv_i32_vector_ext(v4int * restrict a, v4int * restrict b) {
   *a += *b;
 }
 
